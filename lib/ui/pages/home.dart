@@ -1,8 +1,11 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:home/ui/widgets/about_landscape.dart';
+import 'package:home/ui/widgets/about_portrait.dart';
 import 'package:home/ui/widgets/appbar.dart';
+import 'package:home/ui/widgets/carusel_projects.dart';
+import 'package:home/ui/widgets/developers_wrap.dart';
 import 'package:home/ui/widgets/fotter.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:home/ui/widgets/unihacks_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,49 +15,48 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: const UNIHacksAppBar(),
+      appBar: UNIHacksAppBar(
+        scrollController: scrollController,
+      ),
+      drawer: size.width > 700
+          ? null
+          : UNIHacksDrawer(
+              scrollController: scrollController,
+            ),
       body: ListView(
+        controller: scrollController,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           Center(
             child: Column(
               children: [
                 Container(
-                  height: 100,
+                  height: size.width > 850 ? 100 : 250,
                   width: 900,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(width: 20.0, height: 100.0),
-                      const Text(
-                        'No se necesita mucho para ',
-                        style: TextStyle(
-                          fontSize: 50,
-                        ),
-                      ),
-                      const SizedBox(width: 20.0, height: 100.0),
-                      DefaultTextStyle(
-                        style: TextStyle(
-                          fontSize: 50.0,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
-                        child: AnimatedTextKit(
-                          animatedTexts: [
-                            RotateAnimatedText('Innovar '),
-                            RotateAnimatedText('Crear   '),
-                            RotateAnimatedText('Impactar'),
-                          ],
-                          repeatForever: true,
-                        ),
-                      ),
-                    ],
-                  ),
+                  child: size.width > 850
+                      ? const AboutLandscape()
+                      : const AboutPortrait(),
                 ),
                 Container(
                   width: 900,
@@ -70,55 +72,20 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          SizedBox(
-            height: 50,
+          if (size.width > 700)
+            const SizedBox(
+              height: 100,
+            ),
+          CaruselProjects(),
+          const SizedBox(
+            height: 300,
           ),
-          CarouselDemo(),
-          SizedBox(
+          const DevelopersWrap(),
+          const SizedBox(
             height: 300,
           ),
           const Fotter(),
         ],
-      ),
-    );
-  }
-}
-
-class CarouselDemo extends StatelessWidget {
-  final List<String> images = [
-    'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_2557,h_1321/https://assets.ubuntu.com/v1/acdf946a-Screenshot+from+2022-04-18+13-05-17.png',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXXFXxnHNlrKeb9LWbu52jzQPglMVeQiOWmDExUrpv-17w65BuvYSUN7C2lmY3lvjTlb8&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT32QCYIW5McTn1JIzIbPdgPDC_BJyYqPEJ5AX81EcQ-YnpApiEF8pXtA6Ci04V62zJ0QQ&usqp=CAU',
-    // Agrega más imágenes aquí
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 400,
-      width: 900,
-      child: CarouselSlider.builder(
-        itemCount: images.length * 2, // Duplica la cantidad de imágenes
-        itemBuilder: (context, index, realIndex) {
-          final int currentIndex = index % images.length;
-          return Image.network(
-            images[currentIndex],
-            fit: BoxFit.cover,
-          );
-        },
-        options: CarouselOptions(
-          aspectRatio: 16 / 9,
-          viewportFraction: 0.8,
-          initialPage: 0,
-          enableInfiniteScroll: true, // Habilita el desplazamiento infinito
-          reverse: false,
-          autoPlay: true,
-          autoPlayInterval: Duration(seconds: 3),
-          autoPlayAnimationDuration: Duration(milliseconds: 800),
-          autoPlayCurve: Curves.fastOutSlowIn,
-          enlargeCenterPage: true,
-          scrollDirection: Axis.horizontal,
-        ),
       ),
     );
   }
