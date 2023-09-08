@@ -1,8 +1,7 @@
-import 'dart:html';
-
+// ignore: avoid_web_libraries_in_flutter
+//import 'dart:html';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:unihacks_ui_kit/themes/theme_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,20 +15,21 @@ class Fotter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentTheme = Provider.of<ThemeProvider>(context);
+    final size = MediaQuery.of(context).size;
     return Container(
       height: MediaQuery.of(context).size.height / 4,
       color: currentTheme.isDarkTheme()
           ? const Color.fromARGB(255, 94, 93, 93)
           : const Color.fromARGB(255, 196, 194, 194),
+      padding: EdgeInsets.symmetric(
+          horizontal: size.width > 550 ? size.width / 5 : 20),
       child: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  width: 250,
-                ),
                 Text(
                   '© 2023 UNIHacks',
                   style: TextStyle(
@@ -50,9 +50,6 @@ class Fotter extends StatelessWidget {
                   lable: 'linkedin',
                   url: 'https://github.com/UniHacksOrg',
                   iconData: EvaIcons.linkedinOutline,
-                ),
-                SizedBox(
-                  width: 250,
                 ),
               ],
             ),
@@ -81,10 +78,9 @@ class ContactButton extends StatelessWidget {
 
   Future<void> _externalLaunchUrl() async {
     if (kIsWeb) {
-      final anchor = AnchorElement(href: url)
-        ..setAttribute('target', 'blank')
-        ..click();
-      print('object');
+      //final anchor = AnchorElement(href: url)
+      //  ..setAttribute('target', 'blank')
+      //  ..click();
     } else {
       if (await canLaunch(url)) {
         await launch(url);
