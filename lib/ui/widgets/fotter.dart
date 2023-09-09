@@ -78,7 +78,7 @@ class ContactButton extends StatelessWidget {
 
   Future<void> _externalLaunchUrl() async {
     if (kIsWeb) {
-      final anchor = AnchorElement(href: url)
+      AnchorElement(href: url)
         ..setAttribute('target', 'blank')
         ..click();
     } else {
