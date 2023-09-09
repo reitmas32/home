@@ -1,16 +1,35 @@
-# home
+# UNIHacks - Landingpage
 
-A new Flutter project.
+![Logo UNIHacks](https://raw.githubusercontent.com/reitmas32/home/main/assets/logo-unihacks.png)
 
-## Getting Started
+Bienvenido a la página de inicio de UNIHacks. Somos una organización sin fines de lucro dedicada al desarrollo de proyectos de código abierto, creados y mantenidos por estudiantes apasionados por la tecnología de la Facultad de Ingeniería de la Universidad Nacional Autónoma de México (UNAM).
 
-This project is a starting point for a Flutter application.
+## Acerca de Nosotros
 
-A few resources to get you started if this is your first Flutter project:
+En UNIHacks, creemos en la colaboración, el aprendizaje y la innovación a través del código abierto. Nuestro objetivo es proporcionar un espacio donde los estudiantes de la UNAM puedan trabajar en proyectos tecnológicos emocionantes, adquirir experiencia práctica y contribuir al mundo del software libre.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Únete a Nosotros
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Si eres estudiante de la Facultad de Ingeniería de la UNAM y te apasiona la tecnología y el código abierto, ¡únete a nosotros! Aquí puedes aprender, colaborar y crear proyectos emocionantes con un grupo de compañeros entusiastas.
+
+## Contacto
+
+Si tienes alguna pregunta o estás interesado en colaborar con nosotros, no dudes en ponerte en contacto:
+
+- Correo Electrónico: unihacks.mail@gmail.com
+- Sitio Web: [unihacks.onrender.com](https://unihacks.onrender.com/)
+- Redes Sociales: [GitHub](https://github.com/UniHacksOrg)
+
+## Contribución
+
+Si deseas contribuir a nuestra página de inicio o a alguno de nuestros proyectos, ¡estamos abiertos a colaboraciones! Solo tienes que hacer un fork del repositorio y crear una solicitud de extracción con tus mejoras.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para obtener más detalles.
+
+---
+
+¡Gracias por visitar la página de inicio de UNAM OpenSource Projects! Esperamos verte pronto en nuestros proyectos y eventos.
+
+**Equipo de UNAM OpenSource Projects**
